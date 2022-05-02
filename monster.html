@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <title>モンスター一覧</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./src/accordion.js"></script>
+</head>
+
+<body>
+  <!--テンプレ-->
+  <div class="title">
+    <p>
+      <a href="./index.html" style="color:#FFF;text-decoration:none">ふぁなしのサモンメイト攻略データベース</a>
+    </p>
+  </div>
+  <div class="container">
+    <ul class="menu">
+      <li class="brand">
+        <p style="text-align:right">
+          <img src="img/ライウォリア.gif" class="top-img" width="60%">
+        </p>
+      </li>
+      <li class="menu-item">
+        <a href="./index.html" style="color:#FFF;text-decoration:none">Top　　　　　　</a>
+      </li>
+      <li class="menu-item">
+        <a href="./monster.html" style="color:#FFF;text-decoration:none">モンスター一覧　　　　　　</a>
+      </li>
+      <li class="menu-item">
+        吸収計算機（未実装）
+      </li>
+      <li class="menu-item">
+        モンスター属性表(未実装)
+      </li>
+    </ul>
+  </div>
+  <!--テンプレ-->
+
+  <div class="pages">
+
+    <div class="accordion">
+      <div class="header">
+        番号順
+        <i class="fa fa-2x fa-angle-down header-icon"></i>
+      </div>
+      <div class="body">
+        <table border="1">
+
+          <tr>
+            <td>1</td>
+            <td> <a href="data.html&id=1">スライム</a> </td>
+          </tr>
+
+        </table>
+
+      </div>
+    </div>
+
+
+    <div class="accordion purple">
+      <div class="header">
+        系統順
+        <i class="header-icon fa fa-2x fa-angle-down" aria-hidden="true"></i>
+      </div>
+      <div class="body">
+        <a href="https://codeprep.jp/">codeprep</a>
+      </div>
+    </div>
+
+
+    <div>
+      <button type="button" class="btn btn-primary" onclick="location.href='../top.html'">TOP</button>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>

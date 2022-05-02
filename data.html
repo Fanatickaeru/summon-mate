@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function getUrlParam(param){
+        let pageUrl=window.location.search.substring(1);
+        let urlVar = pageUrl.split('&');
+        for(let i=0;i<urlVar.length;i++){
+            let paramName = urlVar[i].split('=');
+            if(paramName[0]==param){
+                console.log(paramName[0]);
+                return decodeURI(paramName[1]);
+            }
+        }
+    }
+
+    datajson="./data/monster.json"
+
+    window.onload = function(){
+        console.log("Hello");
+        let id = getUrlParam("id");
+        /*
+        let request = new XMLHttpRequest();
+
+        request.open('GET',datajson);
+        request.send();
+
+        request.onreadystatechange = () => {
+            if(request.readyState==4 && request.status==200){
+                let json=JSON.parse(request.responseText);
+                json=json[String(id)];
+                console.log(json);
+            }
+        }
+        */
+    }
+</script>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<!--テンプレ-->
+
+	<div class="title">
+		<header>
+        <p>
+            <a href="./index.html" style="color:#FFF;text-decoration:none">ふぁなしのサモンメイト攻略データベース</a>
+        </p>
+	</header>
+    </div>
+	<div class="container">
+        <ul class="menu">
+          <li class="brand">
+            <p style="text-align:right">
+            <img src="img/ライウォリア.gif" class="top-img" width="60%">
+          </p>
+          </li>
+          <li class="menu-item">
+            <a href="./index.html" style="color:#FFF;text-decoration:none">Top　　　　　　</a>
+          </li>
+          <li class="menu-item">
+            <a href="./monster.html" style="color:#FFF;text-decoration:none">モンスター一覧　　　　　　</a>
+          </li>
+          <li class="menu-item">
+            吸収計算機（未実装）
+          </li>
+          <li class="menu-item">
+            モンスター属性表(未実装)
+          </li>
+        </ul>
+      </div>
+	<!--テンプレ-->
+
+	<div class="pages"> 
+
+		<p class="name">
+			スライム
+		</p>
+
+		<div class="contents">
+		<br>
+	
+		<p>属性:<span class="a">水1</span></p>
+	
+		<p>系統:スライム</p>
+	
+		<p>魔法:ポイズン,アップ</p>
+	
+		<p>成長:B　(必要経験値2473520)</p>
+
+	</div>
+	
+	<p class="text">
+		最短入手経路:オシロ城付近などでエンカウント<br>
+	</p>
+	<p class="exp">
+		お馴染みスライムです。<br>
+		ストーリーでは最序盤のみの活躍となりそうですが、<br>
+		ステータスを見ると印象ほど弱くはない、といった感じです。<br>
+		素材にはなりませんが、対人戦で縛りとしてスライムパを運用する……というのも<br>
+		案外難しくないのかも知れません。<br>
+	</p>
+
+		<table border="2">
+			<tr>
+				<td></td>
+				<td>ステータス</td>
+				<td>順位</td>
+			</tr>
+			<tr>
+				<td>MHP</td>
+				<td>195</td>
+				<td>130</td>
+			</tr>
+			<tr>
+				<td>MMP</td>
+				<td>157</td>
+				<td>96</td>
+			</tr>
+			<tr>
+				<td>ATK</td>
+				<td>215</td>
+				<td>87</td>
+			</tr>
+			<tr>
+				<td>DEF</td>
+				<td>166</td>
+				<td>122</td>
+			</tr>
+			<tr>
+				<td>AGL</td>
+				<td>175</td>
+				<td>118</td>
+			</tr>
+			<tr>
+				<td>MGC</td>
+				<td>209</td>
+				<td>52</td>
+			</tr>
+			<tr>
+				<td>SPR</td>
+				<td>190</td>
+				<td>73</td>
+			</tr>
+			<tr>
+				<td>TOTAL</td>
+				<td>1307</td>
+				<td>131</td>
+			</tr>
+	
+		</table>
+
+	
+		<br>
+	
+		<div class="d-grid gap-2 d-md-block">
+			<button class="btn btn-primary" type="button" onclick="location.href='../page.html'">一覧に戻る</button>
+		  </div>	
+
+	</div>
+
+</body>
+</html>
