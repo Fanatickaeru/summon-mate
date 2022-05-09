@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
 <script>
     function getUrlParam(param){
+		console.log("call function getUrlParm");
+		console.log(param)
         let pageUrl=window.location.search.substring(1);
         let urlVar = pageUrl.split('&');
         for(let i=0;i<urlVar.length;i++){
             let paramName = urlVar[i].split('=');
             if(paramName[0]==param){
-                console.log(paramName[0]);
+                console.log(paramName[1]);
                 return decodeURI(paramName[1]);
             }
         }
     }
 
-    datajson="./data/monster.json"
+    datajson="./data/monster.json";
+	glowsjson="./data/glows.json";
 
     window.onload = function(){
-        console.log("Hello");
+		// TODO:ロードされたときにページにデータを貼り付ける
+        //console.log("Hello");
         let id = getUrlParam("id");
-        /*
-        let request = new XMLHttpRequest();
 
-        request.open('GET',datajson);
-        request.send();
+        // let request = new XMLHttpRequest();
 
-        request.onreadystatechange = () => {
-            if(request.readyState==4 && request.status==200){
-                let json=JSON.parse(request.responseText);
-                json=json[String(id)];
-                console.log(json);
-            }
-        }
-        */
+        // request.open('GET',datajson);
+        // request.send();
+
+        // request.onreadystatechange = () => {
+        //     if(request.readyState==4 && request.status==200){
+        //         let json=JSON.parse(request.responseText);
+        //         json=json[String(id)];
+        //         console.log(json);
+        //     }
+        // }
+        
+		document.title=id+":";
     }
 </script>
+
+<script>
+	let ctx=document.getElementById("myRedarChart");
+	let myRedarChart = new Chart(ctx,{
+		type:'radar',
+		data:{
+			labels:["MHP","MMP","ATK","DEF","AGL","MGC","SPR"],
+			datasets:[
+				{
+					data:[195,157,215,166,175,209,190],
+					backgroundColor:"rgba(200,112,126,0.5)",
+					borderColor:"rgba(200,112,126,1)",
+					pointBackgroundColor:"rgba(220,123,138,1)",
+					pointBorderColor:"#fff",
+					pointHoverBackgroundColor:"#fff",
+					pointHoverBorderColor:"rgba(200,112,126,1)",
+					hitRadius:5
+				}
+			]
+		},
+		options:{
+			responsive:true,
+			scale:{
+				ticks:{
+					beginAtZero:true,
+					min:0,
+					max:500
+				}
+			}
+		}
+	});
+</script>
+
 <head>
 	<meta charset="utf-8">
 	<title></title>
@@ -152,11 +192,12 @@
 	
 		</table>
 
+		<canvas id="myRedarChart"></canvas>
 	
 		<br>
 	
 		<div class="d-grid gap-2 d-md-block">
-			<button class="btn btn-primary" type="button" onclick="location.href='../page.html'">一覧に戻る</button>
+			<button class="btn btn-primary" type="button" onclick="location.href='./monster.html'">一覧に戻る</button>
 		  </div>	
 
 	</div>
