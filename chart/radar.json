@@ -1,0 +1,40 @@
+{
+    "type": "radar",
+    "data": {
+        "labels": ["MHP","MMP","ATK","DEF","AGL","MGC","SPR"],
+        "datasets": [
+            {
+                "label": "",
+                "backgroundColor": "rgba(200,112,126,0.3)",
+                "borderColor": "rgba(200,112,126,1)",
+                "pointBackgroundColor": "rgba(200,112,126,1)",
+                "pointBorderColor": "#fff",
+                "pointHoverBackgroundColor": "#fff",
+                "pointHoverBorderColor": "rgba(200,112,126,1)",
+                "hitRadius": 5,
+                "data": []
+            },
+            {
+                "label": "平均値",
+                "backgroundColor": "rgba(112,200,126,0.3)",
+                "borderColor": "rgba(112,200,126,1)",
+                "pointBackgroundColor": "rgba(112,200,126,1)",
+                "pointBorderColor": "#fff",
+                "pointHoverBackgroundColor": "#fff",
+                "pointHoverBorderColor": "rgba(112,200,126,1)",
+                "hitRadius": 5,
+                "data": []
+            }
+        ]
+    },
+    "options": {
+        "responsive": true,
+        "scale": {
+            "ticks": {
+                    "beginAtZero":true,
+                    "min": 0,
+                    "max": 600
+                }
+        }
+    }
+}
