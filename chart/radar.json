@@ -12,7 +12,7 @@
                 "pointHoverBackgroundColor": "#fff",
                 "pointHoverBorderColor": "rgba(200,112,126,1)",
                 "hitRadius": 5,
-                "data": [0,0,0,0,0,0,0]
+                "data": [195,157,215,166,175,209,190]
             },
             {
                 "label": "平均値",
@@ -23,7 +23,7 @@
                 "pointHoverBackgroundColor": "#fff",
                 "pointHoverBorderColor": "rgba(112,200,126,1)",
                 "hitRadius": 5,
-                "data": [0,0,0,0,0,0,0]
+                "data": [258.8,178.0,227.9,198.0,190.8,187.4,189.9]
             }
         ]
     },
@@ -33,7 +33,7 @@
             "ticks": {
                     "beginAtZero":true,
                     "min": 0,
-                    "max": 600
+                    "max": 0
                 }
         }
     }
