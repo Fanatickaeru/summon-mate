@@ -12,7 +12,7 @@
                 "pointHoverBackgroundColor": "#fff",
                 "pointHoverBorderColor": "rgba(200,112,126,1)",
                 "hitRadius": 5,
-                "data": []
+                "data": [0,0,0,0,0,0,0]
             },
             {
                 "label": "平均値",
@@ -23,7 +23,7 @@
                 "pointHoverBackgroundColor": "#fff",
                 "pointHoverBorderColor": "rgba(112,200,126,1)",
                 "hitRadius": 5,
-                "data": []
+                "data": [0,0,0,0,0,0,0]
             }
         ]
     },
