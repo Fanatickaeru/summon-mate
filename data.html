@@ -2,7 +2,9 @@
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-<script>
+<script type="module">
+	import {data} from "./src/used_json.js";
+
     function getUrlParam(param){
 		console.log("call function getUrlParm");
 		console.log(param)
@@ -17,33 +19,28 @@
         }
     }
 
-    datajson="./data/monster.json";
-	glowsjson="./data/glows.json";
+    const datajson="../data/monster.json";
+	const glowsjson="../data/glows.json";
 
     window.onload = function(){
-		// TODO:ロードされたときにページにデータを貼り付ける
-        //console.log("Hello");
         let id = getUrlParam("id");
-
-        // let request = new XMLHttpRequest();
-
-        // request.open('GET',datajson);
-        // request.send();
-
-        // request.onreadystatechange = () => {
-        //     if(request.readyState==4 && request.status==200){
-        //         let json=JSON.parse(request.responseText);
-        //         json=json[String(id)];
-        //         console.log(json);
-        //     }
-        // }
-        
-		document.title=id+":";
+        data(datajson,id);
+		
+		/*
+		<id="name">		:	名前
+		<id="attri">	:	属性
+		<span id="growp">	:	種族
+		<span id="magic">	:	魔法
+		<span id="glows">	:	成長区分
+		<span id="glows_exp">	:	必要経験値
+		<span id="encounter">	:	エンカウント
+		<id="exp">	:	説明
+		*/
     }
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./src/sidmenu.js"></script>
+<script src="./src/sidemenu.js"></script>
 
 <head>
 	<meta charset="utf-8">
@@ -60,32 +57,28 @@
 
 	<div class="pages"> 
 
-		<p class="name">
-			スライム
-		</p>
+		<p class="name" id="name"></p>
 
 		<div class="contents">
 		<br>
 	
-		<p>属性:<span class="a">水1</span></p>
+		<p>属性:<span id="attri"></span></p>
 	
-		<p>系統:スライム</p>
+		<p>系統:<span id="growp"></span></p>
 	
-		<p>魔法:ポイズン,アップ</p>
+		<p>魔法:<span id="magic"></span></p>
 	
-		<p>成長:B　(必要経験値2473520)</p>
+		<p>成長:<span id="glows"></span>(必要経験値<span id="glows_exp"></span>)</p>
 
 	</div>
 	
 	<p class="text">
-		最短入手経路:オシロ城付近などでエンカウント<br>
+		最短入手経路:<span id="encounter"></span>でエンカウント<br>
 	</p>
 	<p class="exp">
-		お馴染みスライムです。<br>
-		ストーリーでは最序盤のみの活躍となりそうですが、<br>
-		ステータスを見ると印象ほど弱くはない、といった感じです。<br>
-		素材にはなりませんが、対人戦で縛りとしてスライムパを運用する……というのも<br>
-		案外難しくないのかも知れません。<br>
+		コメント:<br>
+		<p id="exp">
+		</p>
 	</p>
 
 		<table border="2">
@@ -97,8 +90,8 @@
 			</tr>
 			<tr>
 				<td>MHP</td>
-				<td>195</td>
-				<td>130</td>
+				<td><span id="MHP_num">--</span></td>
+				<td><span id="MHP_rank">--</span></td>
 				<td rowspan="7">
 					<!-- 
 						TODO:レーダーチャートの追加
@@ -110,38 +103,38 @@
 			</tr>
 			<tr>
 				<td>MMP</td>
-				<td>157</td>
-				<td>96</td>
+				<td><span id="MMP_num">--</span></td>
+				<td><span id="MMP_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>ATK</td>
-				<td>215</td>
-				<td>87</td>
+				<td><span id="ATK_num">--</span></td>
+				<td><span id="ATK_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>DEF</td>
-				<td>166</td>
-				<td>122</td>
+				<td><span id="DEF_num">--</span></td>
+				<td><span id="DEF_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>AGL</td>
-				<td>175</td>
-				<td>118</td>
+				<td><span id="AGL_num">--</span></td>
+				<td><span id="AGL_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>MGC</td>
-				<td>209</td>
-				<td>52</td>
+				<td><span id="MGC_num">--</span></td>
+				<td><span id="MGC_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>SPR</td>
-				<td>190</td>
-				<td>73</td>
+				<td><span id="SPR_num">--</span></td>
+				<td><span id="SPR_rank">--</span></td>
 			</tr>
 			<tr>
 				<td>TOTAL</td>
-				<td>1307</td>
-				<td>131</td>
+				<td><span id="TOTAL_num">--</span></td>
+				<td><span id="TOTAL_rank">--</span></td>
 				<td>
 					<!-- 
 						TODO:横向き棒グラフの追加
