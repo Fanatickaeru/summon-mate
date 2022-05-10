@@ -133,5 +133,6 @@ function data(dpath,id){// data.htmlのデータを出力する
 	*/
 }
 
+
 // 関数listと関数dataをmoduleとしてexportする
 export {list,data};
