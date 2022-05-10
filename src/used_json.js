@@ -43,11 +43,11 @@ function data(dpath,id){
                 // console.log(element);
                 let item=document.getElementById(element[0]);
                 let text ="";
-		let data=json[element[1]]
+		        let data=json[element[1]]
                 // console.log(data);
                 if(element.length == 2){
-                    // console.log(data,typeof(data));
-                    if(typeof(data)!="string" & data.length>1){
+                    console.log(data,typeof(data));
+                    if(typeof(data)!="string" & data[0]!=""){
                         let len=data.length;
                         let i=0;
                         data.forEach(function(element){
@@ -56,7 +56,7 @@ function data(dpath,id){
                             if(i < len) text = text+",";
                         });
                     }
-                    else if(typeof(data)!="string" & data.length<=1) text="--";
+                    else if(typeof(data)!="string" & data[0]=="") text="--";
                     else if(typeof(data)=="string" & data!="") text=data;
                     else if(typeof(data)=="string" & data=="") text="--";
                     else;
@@ -64,14 +64,14 @@ function data(dpath,id){
                 else if(element.length == 3){
                     data=data[element[2]];
                     // console.log(data);
-                    if(typeof(data)!="string" & data.length>1){
+                    if(typeof(data)!="string" & data[0]!=""){
                         let len=data.length;
                         let i=0;
                         data.forEach(function(element){
                             text = text + "<tab>"+element+"<br>";
                         });
                     }
-                    else if(typeof(data)!="string" & data.length<=1) text="--";
+                    else if(typeof(data)!="string" & data[0]=="") text="--";
                     else if(typeof(data)=="string" & data!="") text=data;
                     else if(typeof(data)=="string" & data =="") text="--";
                     else;
@@ -125,6 +125,5 @@ function data(dpath,id){
         },
 	*/
 }
-
 
 export {list,data};
