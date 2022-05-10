@@ -35,7 +35,6 @@ function data(dpath,id){// data.htmlのデータを出力する
                 ["attri","属性"],
                 ["growp","系統"],
                 ["magic","魔法"],
-                ["glows","成長区分"],
                 ["encounter","説明","最短入手経路"],
                 ["exp","説明","コメント"]
             ];
