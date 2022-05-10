@@ -6,6 +6,7 @@
 
 <script type="module">
 	import {data} from "./src/used_json.js";
+	import {draw} from "./src/draw_chart.js";
 
     function getUrlParam(param){
 		console.log("call function getUrlParm");
@@ -27,7 +28,7 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		
+		draw("RadarChar","radar");
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
@@ -42,11 +43,6 @@
 </script>
 
 <script src="./src/sidemenu.js"></script>
-
-<script type="module">
-	import {draw} from "./src/draw_chart.js";
-	draw(RedarChar,redar);
-</script>
 
 <head>
 	<meta charset="utf-8">
@@ -103,7 +99,7 @@
 						TODO:レーダーチャートの追加
 						TODO:各モンスターごとのチャートと平均のチャートを重ねる。
 					-->
-					<canvas id="RedarChar">
+					<canvas id="RadarChar">
 					</canvas>
 				</td>
 			</tr>
