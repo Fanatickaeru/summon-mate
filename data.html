@@ -10,6 +10,7 @@
 <script type="module">
 	import {data} from "./src/used_json.js";
 	import {draw} from "./src/draw_chart.js";
+	import {GetStatus} from "./src/db.js";
 
     function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
 		console.log("call function getUrlParm");
@@ -32,6 +33,7 @@
         let id = getUrlParam("id");
         data(datajson,id);
 		draw("RadarChar","radar");
+		GetStatus(id);
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
