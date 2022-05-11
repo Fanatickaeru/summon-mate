@@ -1,0 +1,36 @@
+{
+    "type": "bar",
+    "data": {
+        "datasets": [
+            {
+                "label": "",
+                "data": [0],
+                "backgroundColor": "rgba(200,112,126,0.3)"
+            },{
+                "label": "平均値",
+                "data": [0],
+                "backgroundColor": "rgba(112,200,126,0.3)"
+            }
+        ]
+    },
+    "options": {
+        "responsive": true,
+        "indexAxis":"y",
+        "title": {
+            "display": true,
+            "text": "TOTAL"
+        },
+        "scales": {
+            "xAxes": [{
+                "stacked":true,
+                "ticks": {
+                    "min":0,
+                    "max":0
+                }
+            }],
+            "yAxes":[{
+                "stacked": true
+            }]
+        }
+    }
+}
