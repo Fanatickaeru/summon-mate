@@ -42,3 +42,21 @@ async function GetStatus(id){
 }
 
 export {GetStatus};
+
+/*
+select 成長区分,必要経験値 from STATUS,glows where id=[変数id] group by 成長区分;
+select [] as []_num,rank() over(order by [])as []_rank from STATUS where id=[変数id]; 
+select MHP+MMP+ATK+DEF+AGL+MGC+SPR as TOTAL_num,rank() over(order by MHP+MMP+ATK+DEF+AGL+MGC+SPR)as TOTAL_rank from STATUS where id=[変数id]
+
+
+"MHP",
+"MMP",
+"ATK",
+"DEF",
+"AGL",
+"MGC",
+"SPR"
+
+
+
+*/
