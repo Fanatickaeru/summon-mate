@@ -44,18 +44,19 @@ async function GetStatus(id){
 export {GetStatus};
 
 /*
+data.html用
+keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"]
 select 成長区分,必要経験値 from STATUS,glows where id=[変数id] group by 成長区分;
-select [] as []_num,rank() over(order by [])as []_rank from STATUS where id=[変数id]; 
+keys.forEach(function(element){
+    select [element] as [element]_num,rank() over(order by [element])as [element]_rank from STATUS where id=[変数id]; 
+})
 select MHP+MMP+ATK+DEF+AGL+MGC+SPR as TOTAL_num,rank() over(order by MHP+MMP+ATK+DEF+AGL+MGC+SPR)as TOTAL_rank from STATUS where id=[変数id]
 
+statuslist.html用
+keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"]
+item=keys || 成長区分 || TOTAL
+select rank() over(order by [item] desc)as rank,* from STATUS;
 
-"MHP",
-"MMP",
-"ATK",
-"DEF",
-"AGL",
-"MGC",
-"SPR"
 
 
 
