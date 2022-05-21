@@ -21,14 +21,16 @@ function dataset(){
 
 async function start(){
     const sqlPromise = initSqlJs({
-        locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
+        // locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
+        locateFile: file => '../datas.db'
+    }).then(SQL =>{
+        const db = new sqlPromise.Database();
+        // const sqlFilePath="../datas.db";
+        // const dataPromise=fetch(sqlFilePath).then(res => res.arrayBuffer());
+        // const [SQL,buf] = await Promise.all([sqlPromise,dataPromise]);
+        // const db = new SQL.Database(new Uint8Array(buf));
+        return(db);
     });
-
-    const sqlFilePath="../datas.db";
-    const dataPromise=fetch(sqlFilePath,{mode:'no-cors'}).then(res => res.arrayBuffer());
-    const [SQL,buf] = await Promise.all([sqlPromise,dataPromise]);
-    const db = new SQL.Database(new Uint8Array(buf));
-    return(db);
 }
 
 async function GetStatus(id){
