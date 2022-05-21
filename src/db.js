@@ -25,7 +25,7 @@ async function start(){
     });
 
     const sqlFilePath="../datas.db";
-    const dataPromise=fetch(sqlFilePath).then(res => res.arrayBuffer());
+    const dataPromise=fetch(sqlFilePath,{mode:'cors'}).then(res => res.arrayBuffer());
     const [SQL,buf] = await Promise.all([sqlPromise,dataPromise]);
     const db = new SQL.Database(new Uint8Array(buf));
     return(db);
