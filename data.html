@@ -77,8 +77,9 @@
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
-		console.log(contents[0]["values"][0]);
-		console.log(typeof(contents[0]["values"][0]));
+		let dt=contents[0]["values"][0];
+		console.log(dt);
+		console.log(typeof(dt));
 
 
 		let avereq="select AVG()"
