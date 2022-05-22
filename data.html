@@ -26,7 +26,7 @@
         }
     }
 
-	async function start() {
+	async function fromDB(id) {
 		const sqlPromise = initSqlJs({
 			locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
 		});
@@ -38,7 +38,7 @@
         let contents = db.exec(query);
 		console.log(contents);
 	}
-	start();
+	
 
     const datajson="../data/monster.json";
 	const glowsjson="../data/glows.json";
@@ -47,6 +47,7 @@
         let id = getUrlParam("id");
         data(datajson,id);
 		draw("RadarChar","radar");
+		fromDB(id);
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
