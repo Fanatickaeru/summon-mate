@@ -78,6 +78,7 @@
         let contents = db.exec(query);
 		console.log(contents);
 		console.log(contents[0]["values"][0]);
+		console.log(typeof(contents[0]["values"][0]));
 
 
 		let avereq="select AVG()"
