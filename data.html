@@ -72,7 +72,7 @@
 		const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
 		const db = new SQL.Database(new Uint8Array(buf));
 
-		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID="+String(id)+";";
+		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 && ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
 		console.log(typeof(contents));
