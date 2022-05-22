@@ -1,4 +1,4 @@
-export function draw(id,type){// グラフを描画する・moduleとして呼び出せるようにexportする
+export function draw(id,type,dataObj){// グラフを描画する・moduleとして呼び出せるようにexportする
     const path="../chart/"
     let ctx=document.getElementById(id);// html内の変数idの要素にアクセスする
     let request = new XMLHttpRequest();

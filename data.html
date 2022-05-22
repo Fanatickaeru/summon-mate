@@ -10,7 +10,44 @@
 <script type="module">
 	import {data} from "./src/used_json.js";
 	import {draw} from "./src/draw_chart.js";
-	import {GetStatus} from "./src/db.js";
+
+	function status(){// ステータス用データセット
+		const data={
+			"id":0,
+			"成長区分":"",
+			"必要経験値":0,
+			"status":{
+				"num":{
+					"MHP":0,
+					"MMP":0,
+					"ATK":0,
+					"DEF":0,
+					"AGL":0,
+					"MGC":0,
+					"SPR":0
+				},
+				"rank":{
+					"MHP":0,
+					"MMP":0,
+					"ATK":0,
+					"DEF":0,
+					"AGL":0,
+					"MGC":0,
+					"SPR":0
+				}
+			},
+			"ave":{
+				"MHP":0,
+				"MMP":0,
+				"ATK":0,
+				"DEF":0,
+				"AGL":0,
+				"MGC":0,
+				"SPR":0
+			}
+		};
+		return(data);
+	}
 
     function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
 		console.log("call function getUrlParm");
@@ -26,7 +63,7 @@
         }
     }
 
-	async function fromDB(id) {
+	async function fromDB(id) {// SQLiteからデータを引っ張り出す
 		const sqlPromise = initSqlJs({
 			locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
 		});
@@ -35,14 +72,18 @@
 		const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
 		const db = new SQL.Database(new Uint8Array(buf));
 
-		let query="select * from STATUS where ID="+String(id)+";";
+		let query="select 成長区分 from STATUS where ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
 		console.log(typeof(contents));
 		console.log(contents[0]["columns"])
+
 		let avereq="select AVG()"
 	}
-	
+	/*
+	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
+	select 
+	*/
 
     const datajson="../data/monster.json";
 	const glowsjson="../data/glows.json";
@@ -50,8 +91,9 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		draw("RadarChar","radar");
 		fromDB(id);
+		draw("RadarChar","radar");
+
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
