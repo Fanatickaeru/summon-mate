@@ -23,8 +23,8 @@ async function start(){
     const sqlPromise = initSqlJs({
         // locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
         locateFile: file => '../datas.db'
-    }).then(SQL =>{
-        const db = new SQL.Database();
+    }).then(STATUS =>{
+        const db = new STATUS.Database();
         // const sqlFilePath="../datas.db";
         // const dataPromise=fetch(sqlFilePath).then(res => res.arrayBuffer());
         // const [SQL,buf] = await Promise.all([sqlPromise,dataPromise]);
