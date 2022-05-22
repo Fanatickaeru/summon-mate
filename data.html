@@ -11,9 +11,9 @@
 	import {data} from "./src/used_json.js";
 	import {draw} from "./src/draw_chart.js";
 
-	function status(){// ステータス用データセット
+	function status(id){// ステータス用データセット
 		const data={
-			"id":0,
+			"id":Number(id),
 			"成長区分":"",
 			"必要経験値":0,
 			"status":{
@@ -72,11 +72,18 @@
 		const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
 		const db = new SQL.Database(new Uint8Array(buf));
 
+		let data=status(id);
+
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
 		console.log(typeof(contents));
-		console.log(contents[0]["values"][0])
+		// console.log(contents[0]["values"][0])
+		for(i=0;i<contents[0]["values"][0].length;i++){
+			data[contents[0]["columns"][i]]=contents[0]["values"][0][i];
+		}
+		console.log(data);
+
 
 		let avereq="select AVG()"
 	}
