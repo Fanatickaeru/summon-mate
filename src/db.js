@@ -36,7 +36,7 @@ async function start(){
 async function GetStatus(id){
     let data=dataset();
     let db=await start();
-    let query="select * from STATUS where ID={};".format(id);
+    let query="select * from STATUS where ID="+src(id)+";";
     let status=db.exec(query);
     console.log(status);
     console.log(typeof(status));
