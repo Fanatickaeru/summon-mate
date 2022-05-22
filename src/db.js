@@ -23,12 +23,16 @@ async function start(){
     const sqlPromise = initSqlJs({
         // locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
         locateFile: file => '../datas.db'
-    }).then(STATUS =>{
-        const db = new STATUS.Database();
+    }).then(SQL =>{
+        const db = new SQL.Database();
         // const sqlFilePath="../datas.db";
         // const dataPromise=fetch(sqlFilePath).then(res => res.arrayBuffer());
         // const [SQL,buf] = await Promise.all([sqlPromise,dataPromise]);
         // const db = new SQL.Database(new Uint8Array(buf));
+        let query="select * from STATUS where ID="+String(id)+";";
+        let status=db.exec(query);
+        console.log(status);
+        console.log(typeof(status));
         return(db);
     });
 }
@@ -36,10 +40,10 @@ async function start(){
 async function GetStatus(id){
     let data=dataset();
     let db=await start();
-    let query="select * from STATUS where ID="+String(id)+";";
-    let status=db.exec(query);
-    console.log(status);
-    console.log(typeof(status));
+    // let query="select * from STATUS where ID="+String(id)+";";
+    // let status=db.exec(query);
+    // console.log(status);
+    // console.log(typeof(status));
     // query="select id,rank() over(order by MHP desc)"
 }
 
