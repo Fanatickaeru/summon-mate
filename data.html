@@ -34,10 +34,13 @@
 		const dataPromise = fetch(sqlFilePath).then(res => res.arrayBuffer());
 		const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
 		const db = new SQL.Database(new Uint8Array(buf));
+
 		let query="select * from STATUS where ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
 		console.log(typeof(contents));
+		console.log(contents[0]["columns"])
+		let avereq="select AVG()"
 	}
 	
 
@@ -59,7 +62,11 @@
 		<span id="encounter">	:	エンカウント
 		<id="exp">	:	説明
 		*/
-    }
+
+		/*
+
+		*/
+	}
 </script>
 
 <script src="./src/sidemenu.js"></script>
