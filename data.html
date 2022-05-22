@@ -37,6 +37,7 @@
 		let query="select * from STATUS where ID="+String(id)+";";
         let contents = db.exec(query);
 		console.log(contents);
+		console.log(typeof(contents));
 	}
 	
 
