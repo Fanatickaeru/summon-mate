@@ -21,8 +21,8 @@ function dataset(){
 
 async function start(){
     const sqlPromise = initSqlJs({
-        // locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
-        locateFile: file => '../datas.db'
+        locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}'
+        // locateFile: file => '../datas.db'
     }).then(SQL =>{
         const db = new SQL.Database();
         // const sqlFilePath="../datas.db";
@@ -34,6 +34,8 @@ async function start(){
         console.log(status);
         console.log(typeof(status));
         return(db);
+    }).catch(function(){
+        console.log("error");
     });
 }
 
