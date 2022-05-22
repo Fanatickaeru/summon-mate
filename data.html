@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<!-- グラフ描画用 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<!-- sqliteのファイルにアクセスするため -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js" integrity="sha512-dsyusvfMidFZ0Vttbk7YXRAxaO++5nU1vuFtGMK2MNPr8qDzz0e5IahYWSJkzZcNXn18E1OHP6Oa13nRIwT0zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- サイドメニュー表示プログラムにjQueryを利用しているため -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="module">
+	import {data} from "./src/used_json.js";
+	import {draw} from "./src/draw_chart.js";
+	import {GetStatus} from "./src/db.js";
+
+    function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
+		console.log("call function getUrlParm");
+		console.log(param)
+        let pageUrl=window.location.search.substring(1);
+        let urlVar = pageUrl.split('&');
+        for(let i=0;i<urlVar.length;i++){
+            let paramName = urlVar[i].split('=');
+            if(paramName[0]==param){
+                console.log(paramName[1]);
+                return decodeURI(paramName[1]);
+            }
+        }
+    }
+
+    const datajson="../data/monster.json";
+	const glowsjson="../data/glows.json";
+
+    window.onload = function(){
+        let id = getUrlParam("id");
+        data(datajson,id);
+		draw("RadarChar","radar");
+		GetStatus(id);
+		/*
+		<id="name">		:	名前
+		<id="attri">	:	属性
+		<span id="growp">	:	種族
+		<span id="magic">	:	魔法
+		<span id="glows">	:	成長区分
+		<span id="glows_exp">	:	必要経験値
+		<span id="encounter">	:	エンカウント
+		<id="exp">	:	説明
+		*/
+    }
+</script>
+
+<script src="./src/sidemenu.js"></script>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<!--テンプレ-->
+	<div id="sidemenu">
+		<div id="sidemenu"></div>
+	</div>
+	<!--テンプレ-->
+
+	<div class="pages"> 
+
+		<p class="name" id="name"></p>
+
+		<div class="contents">
+		<br>
+	
+		<p>属性:<span id="attri"></span></p>
+	
+		<p>系統:<span id="growp"></span></p>
+	
+		<p>魔法:<span id="magic"></span></p>
+	
+		<p>成長:<span id="glows"></span>(必要経験値<span id="glows_exp"></span>)</p>
+
+	</div>
+	
+	<p class="text">
+		最短入手経路:<span id="encounter"></span>でエンカウント<br>
+	</p>
+	<p class="exp">
+		コメント:<br>
+		<p id="exp">
+		</p>
+	</p>
+
+		<table border="2">
+			<tr>
+				<td></td>
+				<td>ステータス</td>
+				<td>順位</td>
+				<td>チャート</td>
+			</tr>
+			<tr>
+				<td>MHP</td>
+				<td><span id="MHP_num">--</span></td>
+				<td><span id="MHP_rank">--</span></td>
+				<td rowspan="7">
+					<canvas id="RadarChar">
+					</canvas>
+				</td>
+			</tr>
+			<tr>
+				<td>MMP</td>
+				<td><span id="MMP_num">--</span></td>
+				<td><span id="MMP_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>ATK</td>
+				<td><span id="ATK_num">--</span></td>
+				<td><span id="ATK_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>DEF</td>
+				<td><span id="DEF_num">--</span></td>
+				<td><span id="DEF_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>AGL</td>
+				<td><span id="AGL_num">--</span></td>
+				<td><span id="AGL_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>MGC</td>
+				<td><span id="MGC_num">--</span></td>
+				<td><span id="MGC_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>SPR</td>
+				<td><span id="SPR_num">--</span></td>
+				<td><span id="SPR_rank">--</span></td>
+			</tr>
+			<tr>
+				<td>TOTAL</td>
+				<td><span id="TOTAL_num">--</span></td>
+				<td><span id="TOTAL_rank">--</span></td>
+				<td>
+					<!-- 
+						TODO:横向き棒グラフの追加
+						TODO:各モンスターごとのグラフと平均値のグラフを少しずらして重ねて表示
+					 -->
+					 <canvas id="">
+					 </canvas>
+				</td>
+			</tr>
+	
+		</table>
+
+		<canvas id="myRedarChart"></canvas>
+	
+		<br>
+	
+		<div class="d-grid gap-2 d-md-block">
+			<button class="btn btn-primary" type="button" onclick="location.href='./monster.html'">一覧に戻る</button>
+		  </div>	
+
+	</div>
+
+</body>
+</html>

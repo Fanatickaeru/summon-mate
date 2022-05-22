@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<script type="module">
+  import {list} from "./src/used_json.js";
+
+  const datajson="./data/monster.json";
+
+  window.onload = function(){
+    list(datajson);
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./src/accordion.js"></script>
+<script src="./src/sidemenu.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>モンスター一覧</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <!--テンプレ-->
+	<div id="sidemenu">
+		<div id="sidemenu"></div>
+	</div>
+	<!--テンプレ-->
+
+
+  <div class="pages">
+
+    <div class="accordion">
+      <div class="header">
+        番号順
+        <i class="fa fa-2x fa-angle-down header-icon"></i>
+      </div>
+      <div class="body">
+        <table border="1" id="list">
+        </table>
+      </div>
+    </div>
+
+
+    <div class="accordion purple">
+      <div class="header">
+        系統順
+        <i class="header-icon fa fa-2x fa-angle-down" aria-hidden="true"></i>
+      </div>
+      <div class="body">
+        <a href="https://codeprep.jp/">codeprep</a>
+      </div>
+    </div>
+
+
+    <div>
+      <button type="button" class="btn btn-primary" onclick="location.href='../top.html'">TOP</button>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>
