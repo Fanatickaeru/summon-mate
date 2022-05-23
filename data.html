@@ -102,28 +102,26 @@
 			<th>SPR</th>
 		*/
 		keys.forEach(function(element){
-			let datareq="select "+String(element)+" as num,rank() over(order by "+String(element)+") as rank from STATUS where ID="+String(id)+";";
-			let avgreq="select avg("+String(element)+") as avg from STATUS where ID="+String(id)+";";
+			let datareq="select "+String(element)+" as num from STATUS where ID="+String(id)+";";
+			let rankreq="select id,rank() over(order by "+String(element)+" desc) as rank from STATUS;";
+			let avgreq="select avg("+String(element)+") as avg from STATUS;";
 			let datacontents=db.exec(datareq);
+			let rankcontents=db.ecec(rankreq);
 			let avgcontents=db.exec(avgreq);
 
-			let dct=datacontents[0]["columns"];//[num,rank]
-			let dvt=datacontents[0]["values"][0];
-			let dlen=Object.values(dct).length;
+			let rct=rankcontents[0]["columns"];//[id,rank]
+			let rvt=rankcontents[0]["values"][0];
+			let rlen=Object.values(rct).length;
 			
-			/*
-				let act=avgcontents[0]["columns"];//[avg]
-				let avt=avgcontents[0]["values"][0];
-				let alen=Object.values(act).length;
-			*/
-			// data[status][num][--]
-			// data[status][rank][--]
-			// data[avg][--]
-			for(let i=0;i<dlen;i++){
-				console.log("data[status]["+String(dct[i])+"]["+String(element)+"]:"+String(dvt[i]));
-				data["status"][String(dct[i])][String(element)]=dvt[i];
+			
+			for(let i=0;i<rlen;i++){
+				if(rvt[i][0]=id){
+					data["status"]["rank"][String(element)]=rvt[i][1];
+					break;
+				}
 			}
 
+			data["status"]["num"][String(element)]=datacontents[0]["values"][0]
 			data["avg"][String(element)]=avgcontents[0]["values"][0];
 
 		});
@@ -134,6 +132,7 @@
 	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
 	{
 		select -- as num,rank() over(order by --) as rank from STATUS where ID={id};
+		select rank() over(order by -- desc) as rank from STATUS;
 		select avg(--) as avg from STATUS where ID={id};
 	}
 	*/
