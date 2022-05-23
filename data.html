@@ -11,7 +11,7 @@
 	import {data} from "./src/used_json.js";
 	import {draw} from "./src/draw_chart.js";
 	import {write_table} from "./src/table.js";
-
+	let resolvedFlag=true;
 	function status(id){// ステータス用データセット
 		const data={
 			"id":Number(id),
@@ -148,7 +148,18 @@
 		//処理群おわり　TOTALステータスの数値と順位と平均値
 
 		// console.log(data);
-		return(data);
+		return new promise((resolve,reject)=>{
+			setTimeout(
+				()=>{
+					if(resolvedFlag==true){
+						resolve(data);
+					}
+					else{
+						reject("Rejected");
+					}
+				},200
+			);
+		});
 	}
 	/*
 	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
@@ -170,10 +181,13 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		let datas=fromDB(id);
-		console.log(datas);
-		draw("RadarChar","radar",datas);
-		write_table(datas);
+		let mypromise=fromDB(id);
+		mypromise.then((res)=>{
+			draw("RadarChar","radar",res);
+			write_table(res);
+		}).catch((error)=>{
+			console.log('Handling error as we received ${error}');
+		})
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
