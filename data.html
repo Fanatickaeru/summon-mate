@@ -176,6 +176,7 @@
 		mypromise.then((res)=>{
 			console.log(mypromise);
 			draw("RadarChar","radar",res);
+			draw("BarChar","bar",res);
 			write_table(res);
 		}).catch((error)=>{
 			console.log("Handling error as we received"+error);
@@ -294,7 +295,7 @@
 						TODO:横向き棒グラフの追加
 						TODO:各モンスターごとのグラフと平均値のグラフを少しずらして重ねて表示
 					 -->
-					 <canvas id="">
+					 <canvas id="BarChar">
 					 </canvas>
 				</td>
 			</tr>
