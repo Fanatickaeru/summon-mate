@@ -102,7 +102,7 @@
 			<th>SPR</th>
 		*/
 		keys.forEach(function(element){
-			let datareq="select "+String(element)+"as num,rank() over(order by "+String(element)+") as rank from STATUS where ID="+String(id)+";";
+			let datareq="select "+String(element)+" as num,rank() over(order by "+String(element)+") as rank from STATUS where ID="+String(id)+";";
 			let avgreq="select avg("+String(element)+") as avg from STATUS where ID="+String(id)+";";
 			let datacontents=db.exec(datareq);
 			let avgcontents=db.exec(avgreq);
