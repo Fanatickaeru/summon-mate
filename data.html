@@ -85,12 +85,14 @@
         let contents = db.exec(query);
 
 		console.log(contents);
-		let vt=contents[0]["values"][0];
-		let ct=contents[0]["columns"];
-		let len=Object.values(ct).length;
-		for(let i=0;i<len;i++){
-			// console.log("data["+String(ct[i])+"]:"+String(vt[i]));
-			data[ct[i]]=vt[i];
+		if(content.length!=0){
+			let vt=contents[0]["values"][0];
+			let ct=contents[0]["columns"];
+			let len=Object.values(ct).length;
+			for(let i=0;i<len;i++){
+				// console.log("data["+String(ct[i])+"]:"+String(vt[i]));
+				data[ct[i]]=vt[i];
+			}
 		}
 		//処理群おわり　成長区分と必要経験値
 		
