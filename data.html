@@ -82,9 +82,11 @@
 		console.log(Object.values(dt));
 		console.log(typeof(Object.values(dt))); 
 
-		Object.values(dt).forEach(function(element){
-			console.log(element);
-		});
+		let len=Object.values(contents[0]["columns"]).length;
+		for(let i=0;i<len;i++){
+			console.log("data["+String(contents[0]["columns"][i])+"]:"+String(dt[i]));
+			data[contents[0]["columns"][i]]=dt[i];
+		}
 
 		let avereq="select AVG()"
 	}
