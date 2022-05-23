@@ -84,6 +84,7 @@
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
 
+		console.log(contents);
 		let vt=contents[0]["values"][0];
 		let ct=contents[0]["columns"];
 		let len=Object.values(ct).length;
