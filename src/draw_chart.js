@@ -15,8 +15,8 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
                 MAvg=Object.values(dataObj["avg"]);
             }
             else if(type=="bar"){
-                MStatus=dataObj["TOTAL"]["num"];
-                MAvg=dataObj["TOTAL"]["avg"];
+                MStatus.push(dataObj["TOTAL"]["num"]);
+                MAvg.push(dataObj["TOTAL"]["avg"]);
             }
             console.log(MStatus);
             console.log(MAvg);
