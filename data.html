@@ -63,7 +63,7 @@
         }
     }
 
-	async function startDB() {// SQLiteからデータを引っ張り出す
+	async function fromDB(id) {// SQLiteからデータを引っ張り出す
 		const sqlPromise = initSqlJs({
 			locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
 		});
@@ -71,10 +71,7 @@
 		const dataPromise = fetch(sqlFilePath).then(res => res.arrayBuffer());
 		const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
 		const db = new SQL.Database(new Uint8Array(buf));
-		return(db);
-	}
 
-	function fromDB(db,id){
 		let data=status(id);
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
@@ -97,8 +94,7 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		let db=startDB();
-		fromDB(db,id);
+		fromDB(id);
 		draw("RadarChar","radar");
 
 		/*
