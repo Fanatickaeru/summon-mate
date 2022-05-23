@@ -10,7 +10,6 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
 
             let MStatus=[];
             let MAvg=[];
-            let place="scale";
             if(type=="radar"){
                 MStatus=Object.values(dataObj["status"]["num"]);
                 MAvg=Object.values(dataObj["avg"]);
@@ -18,7 +17,6 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             else if(type=="bar"){
                 MStatus.push(dataObj["TOTAL"]["num"]);
                 MAvg.push(dataObj["TOTAL"]["avg"]);
-                place=place+"s";
             }
             // console.log(MStatus);
             // console.log(MAvg);
@@ -33,7 +31,12 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             });
 
             setlist["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
-            setlist["options"][place]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
+            if(type=="radar"){
+                setlist["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
+            }
+            else if(type=="bar"){
+                setlist["options"]["scales"]["xAxes"]["ticks"]["max"]=parseInt(max+50);
+            }
             console.log("data",data["options"]["ticks"]);
             let chart = new Chart(ctx,setlist);// グラフを描画する
         }
