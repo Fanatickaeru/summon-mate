@@ -106,7 +106,7 @@
 			let rankreq="select id,rank() over(order by "+String(element)+" desc) as rank from STATUS;";
 			let avgreq="select avg("+String(element)+") as avg from STATUS;";
 			let datacontents=db.exec(datareq);
-			let rankcontents=db.ecec(rankreq);
+			let rankcontents=db.exec(rankreq);
 			let avgcontents=db.exec(avgreq);
 
 			let rct=rankcontents[0]["columns"];//[id,rank]
