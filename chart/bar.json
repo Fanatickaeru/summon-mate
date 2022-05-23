@@ -15,7 +15,7 @@
     },
     "options": {
         "responsive": true,
-        "indexAxis":"x",
+        "indexAxis":"y",
         "title": {
             "display": true,
             "text": "TOTAL"
@@ -23,13 +23,6 @@
         "scales": {
             "xAxes": [{
                 "stacked":true,
-                "ticks": {
-                    "min":0,
-                    "max":0
-                }
-            }],
-            "yAxes":[{
-                "stacked": true,
                 "ticks": {
                     "min":0,
                     "max":0
