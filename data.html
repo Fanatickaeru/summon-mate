@@ -169,7 +169,7 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		data=fromDB(id);
+		let data=fromDB(id);
 		draw("RadarChar","radar",data);
 
 		/*
