@@ -34,7 +34,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
 
             setlist["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
             setlist["options"][place]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
-            // console.log("data",data["options"])
+            console.log("data",data["options"]["ticks"]);
             let chart = new Chart(ctx,setlist);// グラフを描画する
         }
     }
