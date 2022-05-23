@@ -18,6 +18,8 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
                 MStatus=dataObg["TOTAL"]["num"];
                 MAvg=dataObj["TOTAL"]["avg"];
             }
+            console.log(MStatus);
+            console.log(MAvg);
             setlist["data"]["datasets"][0]["data"]=MStatus;
             setlist["data"]["datasets"][1]["data"]=MAvg;
 
