@@ -152,7 +152,7 @@
 			setTimeout(
 				()=>{
 					if(resolvedFlag==true){
-						resolve(data);
+						resolve("resolve");
 					}
 					else{
 						reject("Rejected");
@@ -184,8 +184,8 @@
 		let mypromise=fromDB(id);
 		mypromise.then((res)=>{
 			console.log(mypromise);
-			draw("RadarChar","radar",res);
-			write_table(res);
+			// draw("RadarChar","radar",res);
+			// write_table(res);
 		}).catch((error)=>{
 			console.log("Handling error as we received"+error);
 			console.log(mypromise);
