@@ -109,15 +109,15 @@
 			let rankcontents=db.exec(rankreq);
 			let avgcontents=db.exec(avgreq);
 
-			console.log(rankcontents);
+			// console.log(rankcontents);
 			let rct=rankcontents[0]["columns"];//[id,rank]
 			let rvt=rankcontents[0]["values"];
 			let rlen=Object.values(rvt).length;
 			
 			
 			for(let i=0;i<rlen;i++){
-				console.log(rvt[i][0],typeof(rvt[i][0]));
-				if(rvt[i][0]=id){
+				// console.log(rvt[i][0],typeof(rvt[i][0]));
+				if(rvt[i][0]==Number(id)){
 					data["status"]["rank"][String(element)]=rvt[i][1];
 					break;
 				}
