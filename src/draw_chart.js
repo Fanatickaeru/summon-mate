@@ -35,7 +35,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
                 setlist["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
             }
             else if(type=="bar"){            
-                console.log("data:",setlist["options"]["scales"]["xAxes"]);
+                console.log("data:",setlist["options"]["scales"]["xAxes"]["ticks"]);
                 setlist["options"]["scales"]["xAxes"]["ticks"]["max"]=parseInt(max+50);
             }
             let chart = new Chart(ctx,setlist);// グラフを描画する
