@@ -85,7 +85,7 @@
         let contents = db.exec(query);
 
 		console.log(contents);
-		if(content.length!=0){
+		if(contents.length!=0){
 			let vt=contents[0]["values"][0];
 			let ct=contents[0]["columns"];
 			let len=Object.values(ct).length;
