@@ -12,7 +12,7 @@ export async function write_table(dataObj){
         }
     }
     for(let i=0;i<labels.length;i++){
-        let id="TOTAL_"+labels[n];
+        let id="TOTAL_"+labels[i];
         let data=String(dataObj["TOTAL"][labels[i]]);
         console.log(id,":",data);
         let span=document.getElementById(id);// html内の変数idの要素にアクセスする
