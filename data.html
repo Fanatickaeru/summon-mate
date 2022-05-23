@@ -122,6 +122,7 @@
 			// data[avg][--]
 			for(let i=0;i<dlen;i++){
 				console.log("data[status]["+String(dct[i])+"]["+String(element)+"]:"+String(dvt[i]));
+				console.log("data[status][num]["+String(element)+"]:"+String(data[status][num][element]));
 				data[status][dct[i]][element]=dvt[i];
 			}
 			data[avg][element]=avgcontents[0]["values"][0];
