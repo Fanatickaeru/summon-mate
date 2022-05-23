@@ -36,7 +36,7 @@
 					"SPR":0
 				}
 			},
-			"ave":{
+			"avg":{
 				"MHP":0,
 				"MMP":0,
 				"ATK":0,
@@ -44,6 +44,11 @@
 				"AGL":0,
 				"MGC":0,
 				"SPR":0
+			},
+			"TOTAL":{
+				"num":0,
+				"rank":0,
+				"ave":0
 			}
 		};
 		return(data);
@@ -73,26 +78,63 @@
 		const db = new SQL.Database(new Uint8Array(buf));
 
 		let data=status(id);
+
+		//ひとまとめ
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
-		// console.log(contents);
-		let dt=contents[0]["values"][0];
-		// console.log(dt);
-		// console.log(typeof(dt));
-		// console.log(Object.values(dt));
-		// console.log(typeof(Object.values(dt))); 
 
-		let len=Object.values(contents[0]["columns"]).length;
+		let vt=contents[0]["values"][0];
+		let ct=contents[0]["columns"];
+		let len=Object.values(ct).length;
 		for(let i=0;i<len;i++){
-			console.log("data["+String(contents[0]["columns"][i])+"]:"+String(dt[i]));
-			data[contents[0]["columns"][i]]=dt[i];
+			console.log("data["+String(ct[i])+"]:"+String(vt[i]));
+			data[ct[i]]=dt[i];
 		}
+		//ひとまとめ
+		const keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"];
+		/*
+		 	<th>MHP</th>
+			<th>MMP</th>
+			<th>ATK</th>
+			<th>DEF</th>
+			<th>AGL</th>
+			<th>MGC</th>
+			<th>SPR</th>
+		*/
+		keys.forEach(function(element){
+			let datareq="select "+String(element)+"as num,rank() over(order by "+String(element)+") as rank from STATUS where ID="+String(id)+";";
+			let avgreq="select avg("+String(element)+") as avg from STATUS where ID="+String(id)+";";
+			let datacontents=db.exec(datareq);
+			let avgcontents=db.exec(avgreq);
+
+			let dct=datacontents[0]["columns"];//[num,rank]
+			let dvt=datacontents[0]["values"][0];
+			let dlen=Object.values(dct).length;
+			
+			/*
+				let act=avgcontents[0]["columns"];//[avg]
+				let avt=avgcontents[0]["values"][0];
+				let alen=Object.values(act).length;
+			*/
+
+			// data[status][num][--]
+			// data[status][rank][--]
+			// data[avg][--]
+			for(let i=0;i<dlen;i++){
+				data[status][dct[i]][element]=dvt[i];
+			}
+			data[avg][element]=avgcontents[0]["values"][0];
+
+		});
 		console.log(data);
-		let avereq="select AVG()"
+		
 	}
 	/*
 	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
-	select 
+	{
+		select -- as num,rank() over(order by --) as rank from STATUS where ID={id};
+		select avg(--) as avg from STATUS where ID={id};
+	}
 	*/
 
     const datajson="../data/monster.json";
