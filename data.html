@@ -123,8 +123,8 @@
 				}
 			}
 
-			data["status"]["num"][String(element)]=datacontents[0]["values"][0]
-			data["avg"][String(element)]=avgcontents[0]["values"][0];
+			data["status"]["num"][String(element)]=datacontents[0]["values"][0][0];
+			data["avg"][String(element)]=avgcontents[0]["values"][0][0];
 
 		});
 		console.log(data);
