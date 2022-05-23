@@ -9,7 +9,7 @@ export async function write_table(dataObj){
             let data=String(dataObj["status"][labels[n]][keys[i]]);
             console.log(data);
             let span=document.getElementById(id);// html内の変数idの要素にアクセスする
-            span.innerHTML(data);
+            span.innerHTML=data;
         }
     }
 }
