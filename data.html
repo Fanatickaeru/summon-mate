@@ -149,17 +149,8 @@
 
 		// console.log(data);
 		return new promise(function(resolve,reject){
-			setTimeout(
-				()=>{
-					if(resolvedFlag==true){
-						resolve(data);
-					}
-					else{
-						reject("Rejected");
-					}
-				},2000
-			);
-		});
+			resolve(data);
+		});	
 	}
 	/*
 	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
