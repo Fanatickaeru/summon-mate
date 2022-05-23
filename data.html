@@ -93,6 +93,9 @@
 				// console.log("data["+String(ct[i])+"]:"+String(vt[i]));
 				data[ct[i]]=vt[i];
 			}
+		}else{
+			data["成長区分"]="--";
+			data["必要経験値"]="--";
 		}
 		//処理群おわり　成長区分と必要経験値
 		
@@ -181,6 +184,8 @@
 			draw("RadarChar","radar",res);
 			draw("BarChar","bar",res);
 			write_table(res);
+			document.getElementById("glows").innerHTML=res["成長区分"];
+			document.getElementById("glows_exp").innerHTML=res["必要経験値"];
 		}).catch((error)=>{
 			console.log("Handling error as we received"+error);
 			console.log(mypromise);
