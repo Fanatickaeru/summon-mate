@@ -169,8 +169,8 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		let data=fromDB(id);
-		draw("RadarChar","radar",data);
+		let datas=fromDB(id);
+		draw("RadarChar","radar",datas);
 
 		/*
 		<id="name">		:	名前
