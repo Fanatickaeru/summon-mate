@@ -6,21 +6,32 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
     request.send();
     request.onreadystatechange=()=>{
         if(request.readyState==4 && request.status==200){// 接続に成功した場合
-            let data=JSON.parse(request.responseText);
-            
-            // デモデータ
-            let stalist=data["data"]["datasets"][0]["data"].concat(data["data"]["datasets"][1]["data"]);
-            // デモデータ終わり
+            let setlist=JSON.parse(request.responseText);
+
+            let MStatus=[];
+            let MAvg=[];
+            if(type=="radar"){
+                MStatus=Object.values(dataObj["status"]["num"]);
+                MAvg=Object.values(dataObj["avg"]);
+            }
+            else if(type=="bar"){
+                MStatus=dataObg["TOTAL"]["num"];
+                MAvg=dataObj["TOTAL"]["avg"];
+            }
+            setlist["data"]["datasets"][0]["data"]=MStatus;
+            setlist["data"]["datasets"][1]["data"]=MAvg;
+
+            let stalist=MStatus.concat(MAvg);
             let max=0;// データの最大値を保存する変数
             // console.log(stalist);
             stalist.forEach(function(element){// stalistの最大値を求める
                 if(max<element) max=element;
             });
 
-            data["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
-            data["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
+            setlist["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
+            setlist["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
             // console.log("data",data["options"])
-            let chart = new Chart(ctx,data);// グラフを描画する
+            let chart = new Chart(ctx,setlist);// グラフを描画する
         }
     }
 }

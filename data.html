@@ -87,7 +87,7 @@
 		let ct=contents[0]["columns"];
 		let len=Object.values(ct).length;
 		for(let i=0;i<len;i++){
-			console.log("data["+String(ct[i])+"]:"+String(vt[i]));
+			// console.log("data["+String(ct[i])+"]:"+String(vt[i]));
 			data[ct[i]]=vt[i];
 		}
 		//処理群おわり　成長区分と必要経験値
@@ -169,8 +169,8 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		fromDB(id);
-		draw("RadarChar","radar");
+		data=fromDB(id);
+		draw("RadarChar","radar",data);
 
 		/*
 		<id="name">		:	名前
