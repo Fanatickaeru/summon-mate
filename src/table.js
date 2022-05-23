@@ -1,5 +1,5 @@
 export async function write_table(dataObj){
-    const keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"];
+    const keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR","TOTAL"];
     const labels=["num","rank"];
     console.log(dataObj);
     for(let i=0;i<7;i++){
@@ -12,4 +12,5 @@ export async function write_table(dataObj){
             span.innerHTML=data;
         }
     }
+
 }
