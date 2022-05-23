@@ -170,9 +170,10 @@
     window.onload = function(){
         let id = getUrlParam("id");
         data(datajson,id);
-		let datas=await fromDB(id);
-		draw("RadarChar","radar",datas);
+		let datas=fromDB(id);
 		write_table(datas);
+		draw("RadarChar","radar",datas);
+		
 		/*
 		<id="name">		:	名前
 		<id="attri">	:	属性
