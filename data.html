@@ -79,7 +79,7 @@
 
 		let data=status(id);
 
-		//ひとまとめ
+		//処理群はじめ　成長区分と必要経験値
 		let query="select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分 and ID="+String(id)+";";
         let contents = db.exec(query);
 
@@ -90,17 +90,10 @@
 			console.log("data["+String(ct[i])+"]:"+String(vt[i]));
 			data[ct[i]]=vt[i];
 		}
-		//ひとまとめ
+		//処理群おわり　成長区分と必要経験値
+		
+		//処理群はじめ　各種ステータスの数値と順位と平均値
 		const keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"];
-		/*
-		 	<th>MHP</th>
-			<th>MMP</th>
-			<th>ATK</th>
-			<th>DEF</th>
-			<th>AGL</th>
-			<th>MGC</th>
-			<th>SPR</th>
-		*/
 		keys.forEach(function(element){
 			let datareq="select "+String(element)+" as num from STATUS where ID="+String(id)+";";
 			let rankreq="select id,rank() over(order by "+String(element)+" desc) as rank from STATUS;";
@@ -127,15 +120,46 @@
 			data["avg"][String(element)]=avgcontents[0]["values"][0][0];
 
 		});
-		console.log(data);
+		//処理群おわり　各種ステータスの数値と順位と平均値
 		
+		//処理群はじめ　TOTALステータスの数値と順位と平均値
+		let datareq="select MHP+MMP+ATK+DEF+AGL+MGC+SPR as TOTAL from STATUS where ID="+String(id)+";";
+		let rankreq="select id,rank() over(order by MHP+MMP+ATK+DEF+AGL+MGC+SPR desc) as rank from STATUS;";
+		let avgreq="select avg(MHP+MMP+ATK+DEF+AGL+MGC+SPR) as avg from STATUS;";
+		let datacontents=db.exec(datareq);
+		let rankcontents=db.exec(rankreq);
+		let avgcontents=db.exec(avgreq);
+
+		let rct=rankcontents[0]["columns"];//[id,rank]
+		let rvt=rankcontents[0]["values"];
+		let rlen=Object.values(rvt).length;
+		
+		for(let i=0;i<rlen;i++){
+			if(rvt[i][0]==Number(id)){
+				data["TOTAL"]["rank"]=rvt[i][1];
+				break;
+			}
+		}
+
+		data["TOTAL"]["num"]=datacontents[0]["values"][0][0];
+		data["TOTAL"]["avg"]=avgcontents[0]["values"][0][0];
+
+		//処理群おわり　TOTALステータスの数値と順位と平均値
+
+		console.log(data);
+		return(data);
 	}
 	/*
 	select T1.成長区分 as 成長区分,T2.必要経験値 as 必要経験値 from STATUS T1,glows T2 where T1.成長区分=T2.成長区分,ID={id};
 	{
-		select -- as num,rank() over(order by --) as rank from STATUS where ID={id};
+		select -- as numfrom STATUS where ID={id};
 		select rank() over(order by -- desc) as rank from STATUS;
 		select avg(--) as avg from STATUS where ID={id};
+	}
+	{
+		select MHP+MMP+ATK+DEF+AGL+MGC+SPR as TOTAL from STATUS where ID={id};
+		select avg(MHP+MMP+ATK+DEF+AGL+MGC+SPR) as avg from STATUS;
+
 	}
 	*/
 
