@@ -6,7 +6,7 @@
 
 ## 目標
 * ページの完成
-* github.ioにて公開
+* ~~github.ioにて公開~~ この構造ではできない
 
 ## 参加者
 * [ふぁなし](https://twitter.com/FanaticSeeker)
