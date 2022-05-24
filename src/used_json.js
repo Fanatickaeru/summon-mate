@@ -85,7 +85,6 @@ function data(dpath,id){// data.htmlのデータを出力する
                     else;
                 }
                 else;// listの長さが2と3以外の場合の処理
-                comsole.log(text);
                 console.log(text);
                 item.innerHTML=text;
             });
