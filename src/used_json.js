@@ -28,7 +28,7 @@ function data(dpath,id){// data.htmlのデータを出力する
         if(request.readyState==4 && request.status==200){
             let json=JSON.parse(request.responseText);
             console.log(json);
-            json=json[String(id)];
+            json=json[id];
             console.log(json);
             document.title=id+":"+json["名前"];//titleを変更する
             const list=[//htmlのidとjsonのkeyを対応つけるためのリスト
