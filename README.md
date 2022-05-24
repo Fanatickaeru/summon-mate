@@ -26,10 +26,30 @@ writen by ふぁなし<br>
 writen by uchuukaeru<br>
 グラフを描写する為の関数群<br>
 関係するファイル：chart/*<br>
-#### function draw(id,type,dataObj)
+#### export function draw(id,type,dataObj)
+グラフ描写関数<br>
     引数
-    id[Number]
-    type[String(horizontalBar,radar)]
-    dataObj[Object]
+        id[Number]
+        type[String(horizontalBar,radar)]
+        dataObj[Object]
     返り値
+        なし
+<br>
 
+### getUrlParam.js
+writen by uchuukaeru<br>
+URLに埋め込まれたパラメータから情報を取り出す関数群<br>
+#### function getAllUrlParam()
+パラメータから全てのデータを取り出す<br>
+    引数
+        なし
+    返り値
+        list
+#### export function getUrlParam(param)
+パラメータから目的の情報を取り出す<br>
+    引数
+        param[String]
+    返り値
+        String
+
+### 
