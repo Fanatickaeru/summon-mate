@@ -42,7 +42,7 @@ function data(dpath,id){// data.htmlのデータを出力する
             ];
 
             list.forEach(function(element){// listの中身を参照しながらループ
-                // console.log(element);
+                console.log(element);
                 let item=document.getElementById(element[0]);// html内のlist[][0]のidの要素にアクセス
                 let text ="";// htmlに出力する文字列
 		        let data=json[element[1]]// jsonのlist[][1]の要素にアクセス
