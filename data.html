@@ -176,19 +176,19 @@
     const datajson="../data/monster.json";
 
     window.onload = function(){
-        let id = await getUrlParam("id");
-        data(datajson,id);
-		let mypromise=fromDB(id);
-		mypromise.then((res)=>{
-			// console.log(mypromise);
-			draw("RadarChar","radar",res);
-			draw("BarChar","horizontalBar",res);
-			write_table(res);
-			document.getElementById("glows").innerHTML=res["成長区分"];
-			document.getElementById("glows_exp").innerHTML=res["必要経験値"];
-		}).catch((error)=>{
-			console.log("Handling error as we received"+error);
-			console.log(mypromise);
+		getUrlParam("id").then((id)=>{
+			data(datajson,id);
+			fromDB(id).then((res)=>{
+				// console.log(mypromise);
+				draw("RadarChar","radar",res);
+				draw("BarChar","horizontalBar",res);
+				write_table(res);
+				document.getElementById("glows").innerHTML=res["成長区分"];
+				document.getElementById("glows_exp").innerHTML=res["必要経験値"];
+			}).catch((error)=>{
+				console.log("Handling error as we received"+error);
+				console.log(mypromise);
+			});
 		});
 		/*
 		<id="name">		:	名前

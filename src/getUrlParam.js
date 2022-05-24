@@ -1,4 +1,4 @@
-function getAllUrlParam(){// url内に埋め込まれたパラメータをすべて取り出す
+async function getAllUrlParam(){// url内に埋め込まれたパラメータをすべて取り出す
     let pageUrl=window.location.search.substring(1);// windowのurlを取り出す
     let urlVar = pageUrl.split('&');// '&'で切り分け
     let paramlist=[];
@@ -6,15 +6,20 @@ function getAllUrlParam(){// url内に埋め込まれたパラメータをすべ
         let param=element.split('=');
         paramlist.push(param);
     });
-    return(paramlist);
+    return new Promise((resolve,reject)=>{
+        resolve(paramlist)
+    });
 }
 
-function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
+async function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
     console.log("call function getUrlParm");
     console.log(param)
-    let list=getAllUrlParam();
-    list.forEach(function(element){
-        if(element[0]==param) return decodeURI(element[1]);// element[0]==Paramの内容を返す
+    getAllUrlParam().then((res)=>{
+        res.forEach(function(element){
+            if(element[0]==param) return new Promise((resolve,reject)=>{
+                resolve(decodeURI(element[1]));// element[0]==Paramの内容を返す
+            });
+        });
     });
 }
 
