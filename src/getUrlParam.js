@@ -20,6 +20,7 @@ async function getUrlParam(param){// url内に埋め込まれたパラメータ�
             console.log(element);
             console.log(element[0]==param);
             if(element[0]==param){
+                console.log("true");
                 return new Promise((resolve,reject)=>{
                     resolve(decodeURI(element[1]));// element[0]==Paramの内容を返す
                 });
