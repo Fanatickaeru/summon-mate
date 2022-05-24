@@ -34,9 +34,9 @@ function data(dpath,id){// data.htmlのデータを出力する
             document.title=id+":"+json["名前"];//titleを変更する
             const list=[//htmlのidとjsonのkeyを対応つけるためのリスト
                 ["name","名前"],
-                ["attri","属性"],//
-                ["group","系統"],//
-                ["magic","魔法"],//
+                ["attri","属性"],//list
+                ["group","系統"],//list
+                ["magic","魔法"],//list
                 ["encounter","説明","最短入手経路"],
                 ["exp","説明","コメント"]
             ];
