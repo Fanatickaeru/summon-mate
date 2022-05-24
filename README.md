@@ -22,34 +22,106 @@
 ### accordion.js<br>
 writen by ふぁなし<br>
 
-### draw_chart.js<br>
+---
+---
+
+### draw_chart.js
 writen by uchuukaeru<br>
 グラフを描写する為の関数群<br>
 関係するファイル：chart/*<br>
 #### export function draw(id,type,dataObj)
 グラフ描写関数<br>
-    引数
-        id[Number]
-        type[String(horizontalBar,radar)]
-        dataObj[Object]
-    返り値
-        なし
-<br>
+引数<br>
+* id[Number]<br>
+* type[String(horizontalBar,radar)]<br>
+* dataObj[Object]<br>
+
+返り値<br>
+* なし<br>
+
+---
+---
 
 ### getUrlParam.js
 writen by uchuukaeru<br>
 URLに埋め込まれたパラメータから情報を取り出す関数群<br>
 #### function getAllUrlParam()
-パラメータから全てのデータを取り出す<br>
-    引数
-        なし
-    返り値
-        list
+パラメータから全てのデータを取り出す<br>    
+引数<br>
+* なし<br>
+
+返り値<br>
+* list<br>
+
+---
+
 #### export function getUrlParam(param)
 パラメータから目的の情報を取り出す<br>
-    引数
-        param[String]
-    返り値
-        String
+引数<br>
+* param[String]<br>
 
-### 
+返り値<br>
+* String<br>
+
+---
+---
+
+### sidemenu.js
+writen by uchuukaeru<br>
+サイドメニューを表示する用の関数群<br>
+
+---
+---
+
+### table.js
+writen by uchuukaeru<br>
+表にデータを表示する関数群<br>
+#### export function write_table(dataObj)
+表にデータを表示する関数<br>
+引数<br>
+* dataObj[Object]<br>
+
+返り値<br>
+* なし<br>
+
+---
+---
+
+### used_json.js
+writen by uchuukaeru<br>
+jsonからデータを取り出し、webページに表示する関数群<br>
+#### export function list(dpath)
+引数<br>
+* dpath[String]<br>
+
+返り値<br>
+* なし<br>
+---
+#### export function data(dpath,id)
+引数<br>
+* dpath[String]<br>
+* id[String]<br>
+
+返り値<br>
+* なし<br>
+
+---
+---
+
+### data.html
+データを表示するページ用html
+#### function status(id)
+引数<br>
+* id[Number]<br>
+
+返り値<br>
+* Object<br>
+---
+
+#### async function fromDB(id)
+SQLiteデータベースからデータを取り出す
+引数<br>
+* id[Number]<br>
+
+返り値<br>
+* Promise<br>
