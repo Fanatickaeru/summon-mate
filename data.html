@@ -176,8 +176,7 @@
     const datajson="../data/monster.json";
 
     window.onload = function(){
-		getUrlParam("id").then((res)=>{
-			let id=res;
+		getUrlParam("id").then((id)=>{
 			console.log("id:",id);
 			data(datajson,id);
 			fromDB(id).then((res)=>{
