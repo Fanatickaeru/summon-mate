@@ -27,14 +27,16 @@ function data(dpath,id){// data.htmlのデータを出力する
     request.onreadystatechange=()=>{
         if(request.readyState==4 && request.status==200){
             let json=JSON.parse(request.responseText);
+            console.log(json);
+            console.log(id);
             json=json[String(id)];
             // console.log(json);
             document.title=id+":"+json["名前"];//titleを変更する
             const list=[//htmlのidとjsonのkeyを対応つけるためのリスト
                 ["name","名前"],
-                ["attri","属性"],
-                ["group","系統"],
-                ["magic","魔法"],
+                ["attri","属性"],//list
+                ["group","系統"],//list
+                ["magic","魔法"],//list
                 ["encounter","説明","最短入手経路"],
                 ["exp","説明","コメント"]
             ];
@@ -83,7 +85,8 @@ function data(dpath,id){// data.htmlのデータを出力する
                     else;
                 }
                 else;// listの長さが2と3以外の場合の処理
-                console.log(text)
+                comsole.log(text);
+                console.log(text);
                 item.innerHTML=text;
             });
         }

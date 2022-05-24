@@ -11,6 +11,7 @@
 	import {data} from "./src/used_json.js";
 	import {draw} from "./src/draw_chart.js";
 	import {write_table} from "./src/table.js";
+	import {getUrlParam} from "./src/getUrlParam.js";
 	
 	function status(id){// ステータス用データセット
 		const data={
@@ -55,20 +56,20 @@
 		return(data);
 	}
 
-    function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
-		console.log("call function getUrlParm");
-		console.log(param)
-        let pageUrl=window.location.search.substring(1);
-        let urlVar = pageUrl.split('&');
-        for(let i=0;i<urlVar.length;i++){
-            let paramName = urlVar[i].split('=');
-            if(paramName[0]==param){
-                console.log(paramName[1]);
-                return decodeURI(paramName[1]);
-            }
-        }
-    }
-	let resolvedFlag=true;
+    // function getUrlParam(param){// url内に埋め込まれたパラメータから目的のものを取り出す
+	// 	console.log("call function getUrlParm");
+	// 	console.log(param)
+    //     let pageUrl=window.location.search.substring(1);
+    //     let urlVar = pageUrl.split('&');
+    //     for(let i=0;i<urlVar.length;i++){
+    //         let paramName = urlVar[i].split('=');
+    //         if(paramName[0]==param){
+    //             console.log(paramName[1]);
+    //             return decodeURI(paramName[1]);
+    //         }
+    //     }
+    // }
+	
 	async function fromDB(id) {// SQLiteからデータを引っ張り出す
 		const sqlPromise = initSqlJs({
 			locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
@@ -173,22 +174,22 @@
 	*/
 
     const datajson="../data/monster.json";
-	const glowsjson="../data/glows.json";
 
     window.onload = function(){
-        let id = getUrlParam("id");
-        data(datajson,id);
-		let mypromise=fromDB(id);
-		mypromise.then((res)=>{
-			// console.log(mypromise);
-			draw("RadarChar","radar",res);
-			draw("BarChar","horizontalBar",res);
-			write_table(res);
-			document.getElementById("glows").innerHTML=res["成長区分"];
-			document.getElementById("glows_exp").innerHTML=res["必要経験値"];
-		}).catch((error)=>{
-			console.log("Handling error as we received"+error);
-			console.log(mypromise);
+		getUrlParam("id").then((id)=>{
+			console.log("id:",id);
+			data(datajson,id);
+			fromDB(id).then((res)=>{
+				// console.log(mypromise);
+				draw("RadarChar","radar",res);
+				draw("BarChar","horizontalBar",res);
+				write_table(res);
+				document.getElementById("glows").innerHTML=res["成長区分"];
+				document.getElementById("glows_exp").innerHTML=res["必要経験値"];
+			}).catch((error)=>{
+				console.log("Handling error as we received"+error);
+				console.log(mypromise);
+			});
 		});
 		/*
 		<id="name">		:	名前

@@ -1,4 +1,4 @@
-export async function write_table(dataObj){
+export function write_table(dataObj){
     const keys=["MHP","MMP","ATK","DEF","AGL","MGC","SPR"];
     const labels=["num","rank"];
     console.log(dataObj);
