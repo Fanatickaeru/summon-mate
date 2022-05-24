@@ -14,7 +14,6 @@
         ]
     },
     "options": {
-        "responsive": true,
         "indexAxis":"y",
         "title": {
             "display": true,
