@@ -37,6 +37,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             else if(type=="bar"){            
                 console.log("data:",setlist["options"]["scales"]["xAxes"][0]["ticks"]);
                 setlist["options"]["scales"]["xAxes"][0]["ticks"]["max"]=parseInt(max+50);
+                console.log(setlist)
             }
             let chart = new Chart(ctx,setlist);// グラフを描画する
         }
