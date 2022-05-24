@@ -177,7 +177,7 @@
 
     window.onload = function(){
 		getUrlParam("id").then((id)=>{
-			conosle.log("id:",id);
+			console.log("id:",id);
 			data(datajson,id);
 			fromDB(id).then((res)=>{
 				// console.log(mypromise);
