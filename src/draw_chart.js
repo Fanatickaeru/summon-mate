@@ -28,13 +28,14 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             // let max=0;// データの最大値を保存する変数
 
             // console.log(stalist);
-            
+
             // stalist.forEach(function(element){// stalistの最大値を求める
             //     if(max<element) max=element;
             // });
 
             setlist["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
             if(type=="radar"){
+                console.log(setlist["options"]["scale"]["ticks"]);
                 setlist["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
             }
             else if(type=="bar"){            
