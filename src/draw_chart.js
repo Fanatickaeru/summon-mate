@@ -35,7 +35,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
 
             setlist["data"]["datasets"][0]["label"]=document.getElementById("name").innerHTML;// グラフのラベルを<id="name">にする
             if(type=="radar"){
-                console.log(setlist["options"]["scale"]["ticks"]);
+                console.log(setlist["options"]["scale"]["ticks"]["max"]);
                 setlist["options"]["scale"]["ticks"]["max"]=parseInt(max+50);// グラフの最大値をmax+50の範囲にする
             }
             else if(type=="bar"){            
