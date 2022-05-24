@@ -180,7 +180,7 @@
         data(datajson,id);
 		let mypromise=fromDB(id);
 		mypromise.then((res)=>{
-			console.log(mypromise);
+			// console.log(mypromise);
 			draw("RadarChar","radar",res);
 			draw("BarChar","bar",res);
 			write_table(res);
@@ -259,7 +259,7 @@
 				<td>MHP</td>
 				<td><span id="MHP_num">--</span></td>
 				<td><span id="MHP_rank">--</span></td>
-				<td rowspan="7">
+				<td rowspan="8">
 					<canvas id="RadarChar">
 					</canvas>
 				</td>
@@ -298,13 +298,15 @@
 				<td>TOTAL</td>
 				<td><span id="TOTAL_num">--</span></td>
 				<td><span id="TOTAL_rank">--</span></td>
+			</tr>
+			<tr>
 				<td>
 					<!-- 
 						TODO:横向き棒グラフの追加
 						TODO:各モンスターごとのグラフと平均値のグラフを少しずらして重ねて表示
 					 -->
-					 <canvas id="BarChar">
-					 </canvas>
+					<canvas id="BarChar">
+					</canvas>
 				</td>
 			</tr>
 	
