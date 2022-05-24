@@ -32,7 +32,7 @@
         "scale": {
             "ticks": {
                     "beginAtZero":true,
-                    "min": 0,
+                    "min": 90,
                     "max": 0
                 }
         }
