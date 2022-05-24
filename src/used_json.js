@@ -33,7 +33,7 @@ function data(dpath,id){// data.htmlのデータを出力する
             const list=[//htmlのidとjsonのkeyを対応つけるためのリスト
                 ["name","名前"],
                 ["attri","属性"],
-                ["growp","系統"],
+                ["group","系統"],
                 ["magic","魔法"],
                 ["encounter","説明","最短入手経路"],
                 ["exp","説明","コメント"]
