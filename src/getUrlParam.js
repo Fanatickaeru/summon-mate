@@ -4,7 +4,7 @@ function getAllUrlParam(){// url内に埋め込まれたパラメータをすべ
     let paramlist=[];
     urlVar.forEach(function(element){// '&'で切り取った中身を'='で切り分ける
         let param=element.split('=');
-        paramlist.append(param);
+        paramlist.push(param);
     });
     return(paramlist);
 }
