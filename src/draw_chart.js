@@ -20,11 +20,13 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             }
             // console.log(MStatus);
             // console.log(MAvg);
-            setlist["data"]["datasets"][0]["data"]=MStatus;
+
+            // setlist["data"]["datasets"][0]["data"]=MStatus;
             // setlist["data"]["datasets"][1]["data"]=MAvg;
 
-            let stalist=MStatus.concat(MAvg);
-            let max=0;// データの最大値を保存する変数
+            // let stalist=MStatus.concat(MAvg);
+            // let max=0;// データの最大値を保存する変数
+            
             // console.log(stalist);
             stalist.forEach(function(element){// stalistの最大値を求める
                 if(max<element) max=element;
@@ -36,7 +38,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             }
             else if(type=="bar"){            
                 // console.log("data:",setlist["options"]["scales"]["xAxes"][0]["ticks"]);
-                setlist["options"]["scales"]["xAxes"][0]["ticks"]["max"]=parseInt(max+50);
+                // setlist["options"]["scales"]["xAxes"][0]["ticks"]["max"]=parseInt(max+50);
                 console.log(setlist)
             }
             let chart = new Chart(ctx,setlist);// グラフを描画する

@@ -1,27 +1,21 @@
 {
     "type": "bar",
     "data": {
-        "datasets": [
-            {
-                "label": "",
-                "data": [0],
-                "backgroundColor": "rgba(200,112,126,0.3)"
-            }
-        ]
+        "labels": ["平成26年", "平成27年", "平成28年", "平成29年", "平成30年"],
+        "datasets": [{
+            "label": "得点",
+            "data": [880, 740, 900, 520, 930],
+            "backgroundColor": "rgba(255, 100, 100, 1)"
+        }]
     },
     "options": {
-        "indexAxis":"y",
+        "indexAxis": "y",
         "scales": {
             "xAxes": [{
                 "ticks": {
-                    "min":0,
-                    "max":0
+                    "min": 300
                 }
             }]
-        },
-        "title": {
-            "display": true,
-            "text": "TOTAL"
         }
     }
 }
