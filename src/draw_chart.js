@@ -21,7 +21,7 @@ export function draw(id,type,dataObj){// グラフを描画する・moduleとし
             // console.log(MStatus);
             // console.log(MAvg);
             setlist["data"]["datasets"][0]["data"]=MStatus;
-            setlist["data"]["datasets"][1]["data"]=MAvg;
+            // setlist["data"]["datasets"][1]["data"]=MAvg;
 
             let stalist=MStatus.concat(MAvg);
             let max=0;// データの最大値を保存する変数
