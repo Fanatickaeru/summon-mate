@@ -176,7 +176,7 @@
     const datajson="../data/monster.json";
 
     window.onload = function(){
-        let id = getUrlParam("id");
+        let id = await getUrlParam("id");
         data(datajson,id);
 		let mypromise=fromDB(id);
 		mypromise.then((res)=>{
