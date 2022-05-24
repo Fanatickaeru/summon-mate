@@ -18,9 +18,12 @@ async function getUrlParam(param){// url内に埋め込まれたパラメータ�
         console.log(res);
         res.forEach(function(element){
             console.log(element);
-            if(element[0]==param) return new Promise((resolve,reject)=>{
-                resolve(decodeURI(element[1]));// element[0]==Paramの内容を返す
-            });
+            console.log(element[0]==param);
+            if(element[0]==param){
+                return new Promise((resolve,reject)=>{
+                    resolve(decodeURI(element[1]));// element[0]==Paramの内容を返す
+                });
+            }
         });
     });
 }
