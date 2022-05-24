@@ -9,7 +9,7 @@
         }]
     },
     "options": {
-        "indexAxis": "x",
+        "indexAxis": "y",
         "scales": {
             "xAxes": [{
                 "ticks": {
