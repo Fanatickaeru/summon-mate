@@ -1,5 +1,5 @@
 {
-    "type": "bar",
+    "type": "horizontalBar",
     "data": {
         "datasets": [
             {
@@ -14,23 +14,16 @@
         ]
     },
     "options": {
-        "responsive": true,
-        "indexAxis":"y",
+        "scales": {
+            "xAxes": [{
+                "ticks": {
+                    "max":0
+                }
+            }]
+        },
         "title": {
             "display": true,
             "text": "TOTAL"
-        },
-        "scales": {
-            "xAxes": [{
-                "stacked":true,
-                "ticks": {
-                    "min":0,
-                    "max":0
-                }
-            }],
-            "yAxes":[{
-                "stacked": true
-            }]
         }
     }
 }
