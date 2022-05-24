@@ -6,10 +6,6 @@
                 "label": "",
                 "data": [0],
                 "backgroundColor": "rgba(200,112,126,0.3)"
-            },{
-                "label": "平均値",
-                "data": [0],
-                "backgroundColor": "rgba(112,200,126,0.3)"
             }
         ]
     },
