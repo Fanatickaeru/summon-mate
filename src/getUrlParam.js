@@ -14,7 +14,7 @@ function getUrlParam(param){// url内に埋め込まれたパラメータから�
     console.log(param)
     let list=getAllUrlParam();
     list.forEach(function(element){
-        if(element[0]==Param) return decodeURI(element[1]);// element[0]==Paramの内容を返す
+        if(element[0]==param) return decodeURI(element[1]);// element[0]==Paramの内容を返す
     });
 }
 
