@@ -148,3 +148,11 @@ html {
 .accordion.purple .body {
   border-color: #8c618d;
 }
+
+.accordion.blue {
+  background-color: #6161ff;
+}
+
+.accordion.blue .body {
+  border-color: #6161ff;
+}
