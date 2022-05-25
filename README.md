@@ -42,30 +42,6 @@ writen by uchuukaeru<br>
 ---
 ---
 
-### getUrlParam.js
-writen by uchuukaeru<br>
-URLに埋め込まれたパラメータから情報を取り出す関数群<br>
-#### function getAllUrlParam()
-パラメータから全てのデータを取り出す<br>    
-引数<br>
-* なし<br>
-
-返り値<br>
-* list<br>
-
----
-
-#### export function getUrlParam(param)
-パラメータから目的の情報を取り出す<br>
-引数<br>
-* param[String]<br>
-
-返り値<br>
-* String<br>
-
----
----
-
 ### sidemenu.js
 writen by uchuukaeru<br>
 サイドメニューを表示する用の関数群<br>
